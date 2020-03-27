@@ -11,7 +11,7 @@ function updateSteemArticles(username) {
         const content = body.replace(/\|/g, '|').replace(/%/g, '％').replace(/{/g, '｛').replace(/}/g, '｝');
         // let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
         // console.log(t, tags);
-        var file_name = '/Users/pravda/Library/Mobile\ Documents/com\~apple\~CloudDocs/HexoBlog/source/_posts/_steemit/' + `${created.replace('T', '-')}-${category}` + '.md';
+        var file_name = '/Users/pravda/Library/Mobile\ Documents/com\~apple\~CloudDocs/HexoBlog/source/_posts/steemit/' + `${created.replace('T', '-')}-${category}` + '.md';
         fs.stat(file_name, function(err) {
             if (!err) {
                 console.log('file or directory exists');
@@ -19,7 +19,7 @@ function updateSteemArticles(username) {
             else if (err.code === 'ENOENT') {
                 console.log(file_name);
                 hexo.post.create({
-                  path: '_steemit/' + `${created.replace('T', '-')}-${category}`,
+                  path: 'steemit/' + `${created.replace('T', '-')}-${category}`,
                   title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
                   content,
                   date,
