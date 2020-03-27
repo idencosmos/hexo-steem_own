@@ -4,7 +4,7 @@ A hexo plugin to publish your steem articles to your personal blog
 
 ## Install
 ```
-npm install --save git+https://github.com/idencosmos/hexo-steem_recent.git
+npm install --save git+https://github.com/idencosmos/hexo-steem_own.git
 ```
 
 ## Config
