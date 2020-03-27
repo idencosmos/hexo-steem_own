@@ -1,4 +1,5 @@
 var steem = require('steem');
+var fs = require('fs');
 
 function updateSteemArticles(username) {
   steem.api.getDiscussionsByBlog({limit:100, tag:username}, function(err, result) {
@@ -10,15 +11,24 @@ function updateSteemArticles(username) {
         const content = body.replace(/\|/g, '|').replace(/%/g, '％').replace(/{/g, '｛').replace(/}/g, '｝');
         // let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
         // console.log(t, tags);
-        hexo.post.create({
-          path: '_steemit/' + `${created.replace('T', '-')}-${category}`,
-          title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
-          content,
-          date,
-          category: 'Uncategorized',
-          tags,
-          author,
-        }, true)
+        var file_name = '/Users/pravda/Library/Mobile\ Documents/com\~apple\~CloudDocs/HexoBlog/source/_posts/_steemit/' + `${created.replace('T', '-')}-${category}` + '.md';
+        fs.stat(file_name, function(err) {
+            if (!err) {
+                console.log('file or directory exists');
+            }
+            else if (err.code === 'ENOENT') {
+                console.log(file_name);
+                hexo.post.create({
+                  path: '_steemit/' + `${created.replace('T', '-')}-${category}`,
+                  title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
+                  content,
+                  date,
+                  category: 'Uncategorized',
+                  tags,
+                  author,
+                }, true)
+            }
+        });
       }
     }
   });
