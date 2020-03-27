@@ -1,0 +1,30 @@
+{
+  "name": "hexo-steem",
+  "version": "0.0.4",
+  "description": "add your steem articles on your hexo blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "steem",
+    "hexo",
+    "blog"
+  ],
+  "author": "Adrien M",
+  "license": "ISC",
+  "dependencies": {
+    "steem": "^0.7.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idencosmos/hexo-steem_recent.git"
+  },
+  "homepage": "https://github.com/axic/ethereumjs-abi",
+  "standard": {
+    "globals": [
+      "describe",
+      "it"
+    ]
+  }
+}
